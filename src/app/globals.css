@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   GLOBAL THEME STRUCTURAL OVERRIDES
+   ========================================================================== */
+
+/* High-end transitions for interactive switches */
+* {
+  transition: background-color 0.4s ease-in-out, border-color 0.4s ease-in-out, color 0.3s ease-in-out, filter 0.8s ease-out;
+}
+
+/* Dedicated image filter transition for grayscale hover reveal */
+img {
+  transition: filter 1s ease-out, transform 0.8s ease-out !important;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-body) !important;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: var(--font-heading) !important;
+  text-transform: var(--text-transform);
+  letter-spacing: var(--letter-spacing);
+}
+
+/* 
+   Button Redefinitions 
+   Allows buttons to completely shift shape, padding, shadow and case per theme
+*/
+.theme-btn,
+a[class*="bg-[var(--color-primary)]"],
+a[class*="bg-white"],
+button[type="submit"] {
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--shadow);
+  border-width: var(--border-width) !important;
+  letter-spacing: var(--letter-spacing) !important;
+  text-transform: var(--text-transform) !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Button Hover State Dynamics */
+.theme-btn:hover,
+a[class*="bg-[var(--color-primary)]"]:hover,
+a[class*="bg-white"]:hover,
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+
+/* 
+   Card and Box Redefinitions 
+   Reshapes panels, cards, and borders in real-time, 
+   using precise target selectors to prevent breaking inline dividers (like border-b, border-t).
+*/
+.theme-card,
+article,
+.p-8,
+.p-10,
+.p-12 {
+  border-radius: var(--border-radius) !important;
+  box-shadow: var(--shadow) !important;
+  border-width: var(--border-width) !important;
+  border-color: var(--color-border) !important;
+}
+
+/* 
+   Explicit Border & Input Reset Overrides
+   Immunizes simple lines, dividers, and inputs against any broad card rules or caching issues.
+*/
+.border-t {
+  border-left-width: 0px !important;
+  border-right-width: 0px !important;
+  border-bottom-width: 0px !important;
+  border-top-width: var(--border-width) !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+}
+
+.border-b {
+  border-left-width: 0px !important;
+  border-right-width: 0px !important;
+  border-top-width: 0px !important;
+  border-bottom-width: var(--border-width) !important;
+  border-radius: 0px !important;
+  box-shadow: none !important;
+}
+
+input, 
+textarea {
+  border-radius: 0px !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  border-left-width: 0px !important;
+  border-right-width: 0px !important;
+  border-top-width: 0px !important;
+  border-bottom-width: var(--border-width) !important;
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+}
+
+/* Specific theme refinements for modern-streetwear elements */
+[style*="modern-streetwear"] .theme-card,
+[style*="modern-streetwear"] .p-8,
+[style*="modern-streetwear"] .p-10,
+[style*="modern-streetwear"] .p-12 {
+  border-width: 2.5px !important;
+}
+
+/* 
+   Butter-Smooth Infinite Marquee Animation
+*/
+@keyframes marqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marqueeScroll 35s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
